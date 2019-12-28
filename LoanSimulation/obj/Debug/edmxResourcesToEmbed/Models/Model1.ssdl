@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="simulationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'simulation.dbo.admin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="admin">
+    <Key>
+      <PropertyRef Name="username" />
+      <PropertyRef Name="password" />
+    </Key>
+    <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bank">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="id" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="simulation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="smallint" Nullable="false" />
+    <Property Name="amount" Type="float" />
+    <Property Name="rate" Type="float" />
+    <Property Name="duration" Type="smallint" />
+    <Property Name="payment" Type="float" />
+    <Property Name="date" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="gender" Type="varchar" MaxLength="50" />
+    <Property Name="bankId" Type="varchar" MaxLength="50" />
+    <Property Name="loanType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="simulationModelStoreContainer">
+    <EntitySet Name="bank" EntityType="Self.bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="simulation" EntityType="Self.simulation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="admin" EntityType="Self.admin" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [admin].[username] AS [username], 
+    [admin].[password] AS [password]
+    FROM [dbo].[admin] AS [admin]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
