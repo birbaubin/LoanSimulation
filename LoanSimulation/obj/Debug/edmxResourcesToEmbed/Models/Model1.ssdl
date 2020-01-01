@@ -15,13 +15,13 @@ warning 6002: The table/view 'simulation.dbo.admin' does not have a primary key 
       <PropertyRef Name="id" />
     </Key>
     <Property Name="name" Type="varchar" MaxLength="100" />
-    <Property Name="id" Type="smallint" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="simulation">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="smallint" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="amount" Type="float" />
     <Property Name="rate" Type="float" />
     <Property Name="duration" Type="smallint" />
@@ -29,7 +29,7 @@ warning 6002: The table/view 'simulation.dbo.admin' does not have a primary key 
     <Property Name="date" Type="varchar" MaxLength="50" />
     <Property Name="email" Type="varchar" MaxLength="50" />
     <Property Name="gender" Type="varchar" MaxLength="50" />
-    <Property Name="bankId" Type="varchar" MaxLength="50" />
+    <Property Name="bank" Type="varchar" MaxLength="50" />
     <Property Name="loanType" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="simulationModelStoreContainer">

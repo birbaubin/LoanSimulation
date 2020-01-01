@@ -14,7 +14,7 @@ namespace LoanSimulation.Models
     
     public partial class simulation
     {
-        public short id { get; set; }
+        public int id { get; set; }
         public Nullable<double> amount { get; set; }
         public Nullable<double> rate { get; set; }
         public Nullable<short> duration { get; set; }
@@ -22,7 +22,7 @@ namespace LoanSimulation.Models
         public string date { get; set; }
         public string email { get; set; }
         public string gender { get; set; }
-        public string bankId { get; set; }
+        public string bank { get; set; }
         public string loanType { get; set; }
     }
 }

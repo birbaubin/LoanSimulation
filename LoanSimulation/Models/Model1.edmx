@@ -20,13 +20,13 @@ warning 6002: The table/view 'simulation.dbo.admin' does not have a primary key 
             <PropertyRef Name="id" />
           </Key>
           <Property Name="name" Type="varchar" MaxLength="100" />
-          <Property Name="id" Type="smallint" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="simulation">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="smallint" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="amount" Type="float" />
           <Property Name="rate" Type="float" />
           <Property Name="duration" Type="smallint" />
@@ -34,7 +34,7 @@ warning 6002: The table/view 'simulation.dbo.admin' does not have a primary key 
           <Property Name="date" Type="varchar" MaxLength="50" />
           <Property Name="email" Type="varchar" MaxLength="50" />
           <Property Name="gender" Type="varchar" MaxLength="50" />
-          <Property Name="bankId" Type="varchar" MaxLength="50" />
+          <Property Name="bank" Type="varchar" MaxLength="50" />
           <Property Name="loanType" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="simulationModelStoreContainer">
@@ -57,13 +57,13 @@ warning 6002: The table/view 'simulation.dbo.admin' does not have a primary key 
             <PropertyRef Name="id" />
           </Key>
           <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="id" Type="Int16" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="simulation">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int16" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="amount" Type="Double" />
           <Property Name="rate" Type="Double" />
           <Property Name="duration" Type="Int16" />
@@ -71,7 +71,7 @@ warning 6002: The table/view 'simulation.dbo.admin' does not have a primary key 
           <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="bankId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="loanType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="admin">
@@ -82,7 +82,7 @@ warning 6002: The table/view 'simulation.dbo.admin' does not have a primary key 
           <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="simulationEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="simulationEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="banks" EntityType="Self.bank" />
           <EntitySet Name="simulations" EntityType="Self.simulation" />
           <EntitySet Name="admins" EntityType="Self.admin" />
@@ -92,7 +92,7 @@ warning 6002: The table/view 'simulation.dbo.admin' does not have a primary key 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="simulationModelStoreContainer" CdmEntityContainer="simulationEntities">
+        <EntityContainerMapping StorageEntityContainer="simulationModelStoreContainer" CdmEntityContainer="simulationEntities1">
           <EntitySetMapping Name="banks">
             <EntityTypeMapping TypeName="simulationModel.bank">
               <MappingFragment StoreEntitySet="bank">
@@ -112,7 +112,7 @@ warning 6002: The table/view 'simulation.dbo.admin' does not have a primary key 
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="bankId" ColumnName="bankId" />
+                <ScalarProperty Name="bank" ColumnName="bank" />
                 <ScalarProperty Name="loanType" ColumnName="loanType" />
               </MappingFragment>
             </EntityTypeMapping>

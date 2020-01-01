@@ -1,104 +1,156 @@
 ﻿@model LoanSimulation.Models.simulation
+@using LoanSimulation.Models
 
 @{
     ViewBag.Title = "Simulation";
+    List<simulation> simuls = ViewBag.result;
 }
 
-<h2>Simulation</h2>
 
 
-@using (Html.BeginForm()) 
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>New simulation</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.amount, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.rate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.rate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.duration, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.duration, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.duration, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="container">
+        <h1>Simulation</h1>
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-horizontal">
+                    <h3 class="app-subtitle">Enter your data to make a new simulation.</h3>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.payment, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.payment, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.payment, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                @Html.EditorFor(model => model.amount, new { htmlAttributes = new { @class = "field input-field" } })
+                                @Html.ValidationMessageFor(model => model.amount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.date, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.rate, new { htmlAttributes = new { @class = "field input-field" } })
+                                @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.duration, new { htmlAttributes = new { @class = "field input-field" } })
+                                @Html.ValidationMessageFor(model => model.duration, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <input type="date" name="date" class="field input-field" />
+                                @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <div class="row">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.bankId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.bankId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.bankId, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.loanType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.loanType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.loanType, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "field input-field" } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                        <div class="field">
+                            
+                            <img src="~/Content/Images/mars.png" class="app-icon"/><input type="radio" name="gender" value="male" class="field app-radio" />
+                            <img src="~/Content/Images/venus.png" class="app-icon"/><input type="radio" name="gender" value="female" class="field app-radio" />
+                            @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="field">
+
+                            <select name="bank" class="input-field">
+                                <option value="BMCE">BMCE</option>
+                                <option value="BMCI">BMCI</option>
+                                <option value="Banque Populaire">Banque Populaire</option>
+                                <option value="Credit Agricole">Credit Agricole</option>
+                                <option value="Société Générale">Société Générale</option>
+                                <option value="Other Bank">Other Bank</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.bank, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="field">
+
+                            <select name="loanType" class="input-field">
+                                <option value="House">House</option>
+                                <option value="Car">Car</option>
+                                <option value="Education">Education</option>
+                                <option value="Travelling">Travelling</option>
+                                <option value="Fourniture">Fourniture</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="submit" name="submit" class="app-btn" value="SIMULATE" />
+                </div>
+
+            </div>
+
+
+            <div class="col-sm">
+                @{
+                    if (simuls != null)
+                    {
+                        int count = simuls.Count;
+                        for (int i = 0; i < count - 1; i++)
+                        {
+
+
+                            <div class="simul-item">
+                                <h3 class="result-title">Simulation details</h3>
+                                <span>Amount: @simuls[i].amount,</span>
+                                <span>Rate: @simuls[i].rate,</span>
+                                <span>Duration: @simuls[i].duration,</span>
+                                <span>Type of loan: @simuls[i].loanType,</span>
+                                <span>Bank: @simuls[i].bank,</span><br />
+                                <span>Your monthly payment will be : <strong>@simuls[i].payment</strong></span>
+                                <br />
+                            </div>
+                        }
+                        if (count >= 1)
+                        {
+                            <div class="new-simul-item simul-item">
+                                <h3 class="result-title">Simulation details</h3>
+                                <span>Amount: @simuls[count - 1].amount,</span>
+                                <span>Rate: @simuls[count - 1].rate,</span>
+                                <span>Duration: @simuls[count - 1].duration,</span>
+                                <span>Type of loan: @simuls[count - 1].loanType,</span>
+                                <span>Bank: @simuls[count - 1].bank,</span><br />
+                                <span>Your monthly payment will be : <strong>@simuls[count - 1].payment</strong></span>
+                                <br />
+                            </div>
+                        }
+
+                    }
+
+
+                }
+
             </div>
         </div>
     </div>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

@@ -13,10 +13,10 @@ namespace LoanSimulation.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class simulationEntities : DbContext
+    public partial class simulationEntities1 : DbContext
     {
-        public simulationEntities()
-            : base("name=simulationEntities")
+        public simulationEntities1()
+            : base("name=simulationEntities1")
         {
         }
     

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="simulationModelStoreContainer" CdmEntityContainer="simulationEntities">
+  <EntityContainerMapping StorageEntityContainer="simulationModelStoreContainer" CdmEntityContainer="simulationEntities1">
     <EntitySetMapping Name="banks">
       <EntityTypeMapping TypeName="simulationModel.bank">
         <MappingFragment StoreEntitySet="bank">
@@ -20,7 +20,7 @@
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="gender" ColumnName="gender" />
-          <ScalarProperty Name="bankId" ColumnName="bankId" />
+          <ScalarProperty Name="bank" ColumnName="bank" />
           <ScalarProperty Name="loanType" ColumnName="loanType" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -15,6 +15,6 @@ namespace LoanSimulation.Models
     public partial class bank
     {
         public string name { get; set; }
-        public short id { get; set; }
+        public int id { get; set; }
     }
 }

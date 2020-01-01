@@ -5,13 +5,13 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="id" Type="Int16" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
   </EntityType>
   <EntityType Name="simulation">
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int16" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="amount" Type="Double" />
     <Property Name="rate" Type="Double" />
     <Property Name="duration" Type="Int16" />
@@ -19,7 +19,7 @@
     <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="bankId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bank" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="loanType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="admin">
@@ -30,7 +30,7 @@
     <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
-  <EntityContainer Name="simulationEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="simulationEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="banks" EntityType="Self.bank" />
     <EntitySet Name="simulations" EntityType="Self.simulation" />
     <EntitySet Name="admins" EntityType="Self.admin" />
